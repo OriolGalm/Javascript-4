@@ -7,14 +7,14 @@ function getAllDirectors(array) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
-  let result = array.filter(x => x.director === "Sidney Lumet" );
+  let result = array.filter(x => x.director === director );
   console.log("EXERCICE 2 ->", result);
   return result;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
-  let result = array.filter(x => x.director === "Sidney Lumet" );
+  let result = array.filter(x => x.director === director );
   let sumaNota = result.map(r => r.score).reduce((n, s) =>  n + s);
   let notaMitja = (sumaNota / result.length).toFixed(2);
   console.log("EXERCICE 3 ->", notaMitja);
@@ -29,17 +29,22 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear(array) {
-  let result = array.filter(x => x.year == x.year).sort((a, b) => a - b).reverse();
-  //let igual = result.filter(i => i.year == )
-  //let igual = result.map().reduce((y, n) => y.year == n.year);
+function orderByYear(array) {  
+  let result = array.sort((a, b) => {
+    if (a.year > b.year) return 1;
+    if (a.year < b.year) return -1;
+    if (a.title > b.title) return 1;
+    if (a.title < b.title) return -1;
+  });
   console.log("EXERCICE 5 ->", result);
   return result;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(array, genreType) {
+  /* let result = array.filter(x => x.genre[genreType]);
+   console.log("EXERCICE 6 ->", result);
+  return result; */
 }
 
 // Exercise 7: Modify the duration of movies to minutes
