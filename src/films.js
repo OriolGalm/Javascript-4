@@ -49,7 +49,10 @@ function moviesAverageByCategory(array, genreType) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
-
+  let minuts = movies.map(m => m.duration.replace(/\D/g,''));
+  let calc = minuts.map(c => (c[0]*60) + parseInt(c[1] + c[2]));
+  let prop = 'duration';
+  movies[prop] = minuts;
 }
 
 // Exercise 8: Get the best film of a year
