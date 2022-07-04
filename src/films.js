@@ -29,7 +29,8 @@ function orderAlphabetically(array) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {  
-  let result = array.sort((a, b) => {
+  let arrayNew = [...array];
+  let result = arrayNew.sort((a, b) => {
     if (a.year > b.year) return 1;
     if (a.year < b.year) return -1;
     if (a.title > b.title) return 1;
@@ -41,14 +42,13 @@ function orderByYear(array) {
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, genreType) {
-  for(let i = 0; i< array.length; i++){
-    if(array[i].genre == genreType  && array[i].score != ''){
-      let result = array.filter(x => x.genre[genreType] === x.genre[genreType]);
-      let genreAvarage = result.map(r => r.score).reduce((n, s) => n + s) / result.length.toFixed(2);
-      console.log("EXERCICE 6 ->", array[i].genre + ", " + genreAvarage);
-      return genreAvarage;
-    }
-  }
+      let result = array.filter(x => x.genre == genreType) && (x.score !== "");
+      let qMoviesSameCategory = result.length;
+      let genreAvarage = result.reduce((n, s) => n + s.score, 0); // result.length.toFixed(2);
+      let avarage = Math.round((genreAvarage / qMoviesSameCategory) * 100) / 100;
+
+      console.log("EXERCICE 6 ->", result);
+      return avarage;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
