@@ -42,25 +42,22 @@ function orderByYear(array) {
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, genreType) {
-      let result = array.filter(x => x.genre == genreType) && (x.score !== "");
-      let qMoviesSameCategory = result.length;
-      let genreAvarage = result.reduce((n, s) => n + s.score, 0); // result.length.toFixed(2);
-      let avarage = Math.round((genreAvarage / qMoviesSameCategory) * 100) / 100;
-
-      console.log("EXERCICE 6 ->", result);
-      return avarage;
+      let result = array.filter(x => (x.genre ==  genreType) && (x.score !== ""));
+      let genreAvarage = result.map(r => r.score).reduce((n, s) => n + s) / result.length.toFixed(2);
+    //  console.log("EXERCICE 6 ->", genreAvarage);
+      return genreAvarage;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
-  let minutsTotal = [];
+  let minutsTotal = {...array};
   let minuts = array.map(m => m.duration.replace(/\D/g,''));
   let calc = minuts.map(c => (c[0]*60) + parseInt(c[1] + c[2]));
   for(let i = 0; i < array.length; i++){
     array[i].duration = calc[i];
     minutsTotal = array;
   };
-  //console.log("EXERCICE 7 ->", minutsTotal);
+  console.log("EXERCICE 7 ->", minutsTotal);
   return minutsTotal;
 }
 
